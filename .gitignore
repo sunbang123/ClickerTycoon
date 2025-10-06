@@ -97,3 +97,7 @@ InitTestScene*.unity*
 
 # Auto-generated scenes by play mode tests
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
+
+
+/Assets/01_Assets/basic_tileset_and_assets_standard
+/Assets/01_Assets/TinySwords
