@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Monster_Spawner : MonoBehaviour
+public class Warrior_Spawner : MonoBehaviour
 {
-    static public Monster_Spawner instance;
+    static public Warrior_Spawner instance;
 
-    [Header("Monster Settings")]
-    public GameObject[] monsterPrefabs;
+    [Header("Warrior Settings")]
+    public GameObject[] warriorPrefabs;
     public Transform spawnPoints;
     public Transform[] setWaypoints;
 
@@ -24,12 +24,12 @@ public class Monster_Spawner : MonoBehaviour
     }
     void Start()
     {
-        InvokeRepeating("SpawnMonster", 2f, 5f);
+        InvokeRepeating("SpawnWarrior", 2f, 5f);
     }
 
-    public void SpawnMonster()
+    public void SpawnWarrior()
     {
-        int i = Random.Range(0, monsterPrefabs.Length);
-        Instantiate(monsterPrefabs[i], spawnPoints.position, Quaternion.identity);
+        int i = Random.Range(0, warriorPrefabs.Length);
+        Instantiate(warriorPrefabs[i], spawnPoints.position, Quaternion.identity);
     }
 }
