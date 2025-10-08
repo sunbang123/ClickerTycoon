@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: dbe7a57ec444c7949825331cb7a64d98
+guid: d6c390e49ca9249488e990ae6c5e6f57
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,121 +100,40 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Archer_Idle_0
+      name: Warrior_Attack2_1
       rect:
         serializedVersion: 2
-        x: 58
-        y: 56
-        width: 70
-        height: 88
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9cedc5f425d0a9540baaddaa07bfb4f4
-      internalID: 637311231
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Archer_Idle_1
-      rect:
-        serializedVersion: 2
-        x: 249
-        y: 56
-        width: 71
-        height: 88
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 95a8c30e3b824684bae8bb4e05ea764a
-      internalID: -1120016063
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Archer_Idle_2
-      rect:
-        serializedVersion: 2
-        x: 440
-        y: 56
-        width: 72
-        height: 88
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fecd9652a4515f94b871aa69371d271e
-      internalID: 1055205941
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Archer_Idle_3
-      rect:
-        serializedVersion: 2
-        x: 633
-        y: 56
-        width: 71
-        height: 89
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6cbbffa47d070284bb1a325df34fd437
-      internalID: -1684890855
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Archer_Idle_4
-      rect:
-        serializedVersion: 2
-        x: 826
-        y: 56
-        width: 70
-        height: 88
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 471a451dbc7da0f45bd094a7efb374a0
-      internalID: 14889120
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Archer_Idle_5
-      rect:
-        serializedVersion: 2
-        x: 1018
-        y: 56
-        width: 70
+        x: 41
+        y: 55
+        width: 81
         height: 86
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -223,8 +142,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 490b5c3eb82e8334daab2c606c4a2385
-      internalID: 1588841936
+      spriteID: d93b6f09732bf1849b1400c02aecd57d
+      internalID: -1365960415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warrior_Attack2_2
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 55
+        width: 80
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f83e8fd49da4a84a8b7e34a8eadab42
+      internalID: 1345625248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warrior_Attack2_3
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 40
+        width: 111
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 824ba8a8422573b41a27fc7112120d25
+      internalID: 1233592408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warrior_Attack2_4
+      rect:
+        serializedVersion: 2
+        x: 633
+        y: 41
+        width: 103
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f4edd04fa6192c4aa1b55b752109a78
+      internalID: 661627848
       vertices: []
       indices: 
       edges: []
@@ -240,12 +222,20 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Archer_Idle_0: 637311231
-      Archer_Idle_3: -1684890855
-      Archer_Idle_1: -1120016063
-      Archer_Idle_2: 1055205941
-      Archer_Idle_4: 14889120
-      Archer_Idle_5: 1588841936
+      Warrior_Attack2_9: 1907300324
+      Warrior_Attack2_4: 661627848
+      Warrior_Attack2_10: 1947096229
+      Warrior_Attack2_2: 1345625248
+      Warrior_Attack2_12: 1640711622
+      Warrior_Attack2_1: -1365960415
+      Warrior_Attack2_7: -880616457
+      Warrior_Attack2_0: -1091306227
+      Warrior_Attack2_8: 1659892322
+      Warrior_Attack2_13: 336038951
+      Warrior_Attack2_6: 996084413
+      Warrior_Attack2_3: 1233592408
+      Warrior_Attack2_11: -30015525
+      Warrior_Attack2_5: 2092433328
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
