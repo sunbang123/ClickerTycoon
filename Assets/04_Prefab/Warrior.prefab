@@ -509,7 +509,7 @@ GameObject:
   - component: {fileID: -6008845921088303882}
   m_Layer: 0
   m_Name: Warrior
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -596,6 +596,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 1
   waypoints: []
+  healthSlider: {fileID: 0}
+  knockbackForce: 1
+  chargeTime: 1
+  damageAmount: 2
 --- !u!50 &-8466183263886160303
 Rigidbody2D:
   serializedVersion: 4
@@ -627,7 +631,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.000000014901161, y: 0.04478398}
