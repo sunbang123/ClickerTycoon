@@ -509,7 +509,7 @@ GameObject:
   - component: {fileID: 9031632227010741716}
   m_Layer: 0
   m_Name: Wave1_Moster 2
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -594,8 +594,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a41117ec5f432e94cbf827a917f3019a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1
+  moveSpeed: 2
   waypoints: []
+  healthSlider: {fileID: 0}
+  knockbackForce: 2
+  chargeTime: 1
+  damageAmount: 2
 --- !u!50 &-8466183263886160303
 Rigidbody2D:
   serializedVersion: 4
@@ -627,7 +631,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
