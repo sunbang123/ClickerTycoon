@@ -47,6 +47,11 @@ public class Mouse_Click : MonoBehaviour
     private int autoGoldB_Level = 0;
 
 
+    private void Awake()
+    {
+        gold = DataManager.instance.playerData.GetData(GameData.Gold);
+    }
+
     void Start()
     {
         UpdateUI();
@@ -225,11 +230,17 @@ public class Mouse_Click : MonoBehaviour
 
         autoGoldB_Text.text = $"(Lv.{autoGoldB_Level}) ∞°∞›: {autoGoldB_Cost:F0}G\n{autoGoldB_Amount:F0}Gold/3√ ";
     }
+
+    void GoldData_Update(int gold)
+    {
+        DataManager.instance.playerData.SetData(GameData.Gold, gold);
+    }
     
     void AddGold()
     {
         gold += clickPower;
         UpdateUI();
+        GoldData_Update(gold);
     }
 }
 
