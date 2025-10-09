@@ -3328,7 +3328,7 @@ Transform:
   m_GameObject: {fileID: 1687539381}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.5022998, y: -0.09489977, z: 0}
-  m_LocalScale: {x: 0.16536805, y: 0.19909292, z: 0.16536805}
+  m_LocalScale: {x: 0.12, y: 0.14447258, z: 0.12}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1859365658}
@@ -3352,7 +3352,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0fbd23fa22340941bf84aca03ab03e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 3
+  waypoints: []
   healthSlider: {fileID: 146227569}
+  knockbackForce: 0.001
+  chargeTime: 2
+  damageAmount: 2
 --- !u!50 &1691654605
 Rigidbody2D:
   serializedVersion: 4
