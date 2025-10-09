@@ -7,46 +7,52 @@ using UnityEngine.EventSystems;
 
 public class Mouse_Click : MonoBehaviour
 {
-    [Header("UI Texts")]
+    [Header("UI")]
     public TextMeshProUGUI goldText;       // 골드 표시용
     public TextMeshProUGUI upgradeText;    // 업그레이드 버튼에 표시할 텍스트
     public TextMeshProUGUI perGoldText;
-    public TextMeshProUGUI autoGoldAText;
-    public TextMeshProUGUI autoGoldBText;
+    public TextMeshProUGUI autoGoldA_Text;
+    public TextMeshProUGUI autoGoldB_Text;
+    public TextMeshProUGUI autoGoldA_Bt_Text;    //버튼 텍스트
+    public TextMeshProUGUI autoGoldB_Bt_Text;
 
 
-    public Button autoGoldAButton;
-    public Button autoGoldBButton;
+    public Button autoGoldA_Button;
+    public Button autoGoldB_Button;
 
 
-    public GameObject shopUI; // ← 상점 UI 오브젝트 (활성/비활성 확인용)
+    public GameObject normal_shopUI; // ← 상점 UI 오브젝트 (활성/비활성 확인용)
+    public GameObject battle_shopUI; // ← 상점 UI 오브젝트 (활성/비활성 확인용)
 
-    [Header("Values")]
+    [Header("Gold Values")]
     public int gold = 0;         // Gold 변수
     public int clickPower = 1;    // 클릭당 골드
-    private int upgradeCost = 10;       // 업그레이드 비용
+    private int click_Cost= 10;       // 업그레이드 비용
+    private int click_Level = 1;
 
-    // 자동채굴 A
+    [Header("Auto Gold A")]
     private bool autoGoldA_Purchased = false;
-    private float autoGoldA_Interval = 1.0f;
+    private float autoGoldA_Interval = 1.0f; //쿨타임
     private int autoGoldA_Amount = 1;
     private int autoGoldA_Cost = 100;
     private float autoGoldA_Timer = 0f;
+    private int autoGoldA_Level = 0;
 
-    // 자동채굴 B
+    [Header("Auto Gold B")]
     private bool autoGoldB_Purchased = false;
-    private float autoGoldB_Interval = 3.0f;
+    private float autoGoldB_Interval = 3.0f; //쿨타임
     private int autoGoldB_Amount = 10;
     private int autoGoldB_Cost = 500;
     private float autoGoldB_Timer = 0f;
+    private int autoGoldB_Level = 0;
 
 
     void Start()
     {
         UpdateUI();
 
-        autoGoldAButton.onClick.AddListener(BuyAutoGoldA);
-        autoGoldBButton.onClick.AddListener(BuyAutoGoldB);
+        autoGoldA_Button.onClick.AddListener(BuyOrUpgradeAutoGoldA);
+        autoGoldB_Button.onClick.AddListener(BuyOrUpgradeAutoGoldB);
     }
 
     void Update()
@@ -55,7 +61,7 @@ public class Mouse_Click : MonoBehaviour
         {
             if (EventSystem.current.IsPointerOverGameObject())    //UI 위를 클릭했다면 점수 증가를 무시
                 return;
-        if (shopUI != null && shopUI.activeSelf)            // 2. 상점이 열려 있을 때도 무시
+        if (normal_shopUI != null && normal_shopUI.activeSelf || battle_shopUI.activeSelf)            // 2. 상점이 열려 있을 때도 무시
             return;
 
             AddGold();
@@ -98,55 +104,15 @@ public class Mouse_Click : MonoBehaviour
         }
     }
 
-    void BuyAutoGoldA()
-    {
-        if (autoGoldA_Purchased)
-        {
-            Debug.Log("자동채굴기 A는 이미 구매했습니다!");
-            return;
-        }
-
-        if (gold >= autoGoldA_Cost)
-        {
-            gold -= autoGoldA_Cost;
-            autoGoldA_Purchased = true;
-            Debug.Log("자동채굴기 A 작동 시작!");
-            UpdateUI();
-        }
-        else
-        {
-            Debug.Log("골드가 부족합니다!");
-        }
-    }
-
-    void BuyAutoGoldB()
-    {
-        if (autoGoldB_Purchased)
-        {
-            Debug.Log("자동채굴기 B는 이미 구매했습니다!");
-            return;
-        }
-
-        if (gold >= autoGoldB_Cost)
-        {
-            gold -= autoGoldB_Cost;
-            autoGoldB_Purchased = true;
-            Debug.Log("자동채굴기 B 작동 시작!");
-            UpdateUI();
-        }
-        else
-        {
-            Debug.Log("골드가 부족합니다!");
-        }
-    }
-
     public void UpgradeClickPower()
     {
-        if (gold >= upgradeCost)
+        if (gold >= click_Cost)
         {
-            gold -= upgradeCost;        // 비용 지불
+            gold -= click_Cost;        // 비용 지불
             clickPower *= 2;            // 클릭당 골드 2배로 증가
-            upgradeCost *= 2;           // 다음 업그레이드 비용 2배 증가
+            click_Cost*= 2;           // 다음 업그레이드 비용 2배 증가
+            click_Level++;
+
             UpdateUI();
         }
         else
@@ -155,42 +121,116 @@ public class Mouse_Click : MonoBehaviour
         }
     }
 
-    public void UpgradeAutoGoldA()
+    // 자동채굴 A
+    void BuyOrUpgradeAutoGoldA()
     {
-        if (gold >= upgradeCost && autoGoldA_Purchased)
+        // 아직 구매 전이라면 구매 로직
+        if (!autoGoldA_Purchased)
         {
-            gold -= autoGoldA_Cost;        // 비용 지불
-            autoGoldA_Amount *= 2;            // 클릭당 골드 2배로 증가
-            autoGoldA_Cost *= 2;           // 다음 업그레이드 비용 2배 증가
-            UpdateUI();
+            if (gold >= autoGoldA_Cost)
+            {
+                gold -= autoGoldA_Cost;
+                autoGoldA_Purchased = true;
+                autoGoldA_Level = 1;
+
+                Debug.Log("자동채굴기 A 작동 시작!");
+                autoGoldA_Cost *= 2;
+
+                UpdateUI();
+            }
+            else
+            {
+                Debug.Log("골드가 부족합니다! (A)");
+            }
+        }
+        else
+        {
+            // 이미 구매했다면 업그레이드 로직
+            if (gold >= autoGoldA_Cost)
+            {
+                gold -= autoGoldA_Cost;
+                autoGoldA_Amount *= 2;    // 자동채굴량 2배
+                autoGoldA_Cost *= 2;      // 업그레이드 비용도 2배 증가
+                autoGoldA_Level++;
+
+                Debug.Log($"자동채굴기 A 업그레이드 완료! 현재 채굴량: {autoGoldA_Amount}");
+                UpdateUI();
+            }
+            else
+            {
+                Debug.Log("골드가 부족합니다! (A 업그레이드)");
+            }
         }
     }
 
-    public void UpgradeAutoGoldB()
+    // 자동채굴 B
+    void BuyOrUpgradeAutoGoldB()
     {
-        if (gold >= upgradeCost && autoGoldB_Purchased)
+        // 아직 구매 전이라면 구매 로직
+        if (!autoGoldB_Purchased)
         {
-            gold -= autoGoldB_Cost;        // 비용 지불
-            autoGoldB_Amount *= 2;            // 클릭당 골드 2배로 증가
-            autoGoldB_Cost *= 2;           // 다음 업그레이드 비용 2배 증가
-            UpdateUI();
+            if (gold >= autoGoldB_Cost)
+            {
+                gold -= autoGoldB_Cost;
+                autoGoldB_Purchased = true;
+                autoGoldB_Level = 1;
+
+                Debug.Log("자동채굴기 B 작동 시작!");
+                autoGoldB_Cost *= 2;
+
+                UpdateUI();
+            }
+            else
+            {
+                Debug.Log("골드가 부족합니다! (B)");
+            }
+        }
+        else
+        {
+            // 이미 구매했다면 업그레이드 로직
+            if (gold >= autoGoldB_Cost)
+            {
+                gold -= autoGoldB_Cost;
+                autoGoldB_Amount *= 2;    // 자동채굴량 2배
+                autoGoldB_Cost *= 2;      // 업그레이드 비용 2배 증가
+                autoGoldB_Level++;
+
+                Debug.Log($"자동채굴기 B 업그레이드 완료! 현재 채굴량: {autoGoldB_Amount}");
+                UpdateUI();
+            }
+            else
+            {
+                Debug.Log("골드가 부족합니다! (B 업그레이드)");
+            }
         }
     }
-
-
-
     void UpdateUI()
     {
         goldText.text = $"Gold: {gold:F0}";
-        upgradeText.text = $"업그레이드: {upgradeCost:F0}";
-        perGoldText.text = $"클릭당 골드: {clickPower:F0}";
-        autoGoldAText.text = $"업그레이드: {autoGoldA_Cost:F0}";
-        autoGoldBText.text = $"업그레이드: {autoGoldB_Cost:F0}";
-    }
+        upgradeText.text = $"(Lv.{click_Level}) 가격: {click_Cost:F0}G\n클릭당: {clickPower:F0}Gold";
+        perGoldText.text = $"클릭당: {clickPower:F0}Gold";
+        //autoGoldA_Text.text = $"업그레이드: {autoGoldA_Cost:F0}";
+        //autoGoldB_Text.text = $"업그레이드: {autoGoldB_Cost:F0}";
 
+
+        // 자동채굴 A UI
+        string aState = autoGoldA_Purchased ? "업그레이드" : "구매";
+        autoGoldA_Bt_Text.text = $"{aState}";
+
+        autoGoldA_Text.text = $"(Lv.{autoGoldA_Level}) 가격: {autoGoldA_Cost:F0}G\n{autoGoldA_Amount:F0}Gold/1초";
+
+        // 자동채굴 B UI
+        string bState = autoGoldB_Purchased ? "업그레이드" : "구매";
+        autoGoldB_Bt_Text.text = $"{bState}";
+
+        autoGoldB_Text.text = $"(Lv.{autoGoldB_Level}) 가격: {autoGoldB_Cost:F0}G\n{autoGoldB_Amount:F0}Gold/3초";
+    }
+    
     void AddGold()
     {
         gold += clickPower;
         UpdateUI();
     }
 }
+
+
