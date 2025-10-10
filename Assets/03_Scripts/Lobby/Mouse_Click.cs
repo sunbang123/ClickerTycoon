@@ -7,6 +7,8 @@ using UnityEngine.EventSystems;
 
 public class Mouse_Click : MonoBehaviour
 {
+    public static Mouse_Click instance;
+
     [Header("UI")]
     public TextMeshProUGUI goldText;       // 골드 표시용
     public TextMeshProUGUI upgradeText;    // 업그레이드 버튼에 표시할 텍스트
@@ -47,8 +49,11 @@ public class Mouse_Click : MonoBehaviour
     private int autoGoldB_Level = 0;
 
 
+
     private void Awake()
     {
+        instance = this;
+
         gold = DataManager.instance.playerData.GetData(GameData.Gold);
     }
 
@@ -209,13 +214,11 @@ public class Mouse_Click : MonoBehaviour
             }
         }
     }
-    void UpdateUI()
+    public void UpdateUI()
     {
         goldText.text = $"Gold: {gold:F0}";
         upgradeText.text = $"(Lv.{click_Level}) 가격: {click_Cost:F0}G\n클릭당: {clickPower:F0}Gold";
         perGoldText.text = $"클릭당: {clickPower:F0}Gold";
-        //autoGoldA_Text.text = $"업그레이드: {autoGoldA_Cost:F0}";
-        //autoGoldB_Text.text = $"업그레이드: {autoGoldB_Cost:F0}";
 
 
         // 자동채굴 A UI
