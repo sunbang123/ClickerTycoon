@@ -2104,7 +2104,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 533278530}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1633523400}
+        m_TargetAssemblyTypeName: Unit_Manager, Assembly-CSharp
+        m_MethodName: BuyOrUpgradeLancer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &533278530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2437,7 +2449,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 574118305}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1633523400}
+        m_TargetAssemblyTypeName: Unit_Manager, Assembly-CSharp
+        m_MethodName: BuyOrUpgradeMonk
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &574118305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4161,7 +4185,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1078073681}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1633523400}
+        m_TargetAssemblyTypeName: Unit_Manager, Assembly-CSharp
+        m_MethodName: BuyOrUpgradeArcher
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1078073681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6035,14 +6071,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffdfeea34a3a0bd4f8ce4f9c2a966288, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  warrior_text: {fileID: 938855745}
-  archer_text: {fileID: 550919283}
-  monk_text: {fileID: 436697166}
-  lancer_text: {fileID: 413479966}
-  warrior_bt_text: {fileID: 20092225}
-  archer_bt_text: {fileID: 580426794}
-  monk_bt_text: {fileID: 1156897166}
-  lancer_bt_text: {fileID: 282032549}
+  goldText: {fileID: 607587777}
+  warriorText: {fileID: 938855745}
+  archerText: {fileID: 550919283}
+  monkText: {fileID: 436697166}
+  lancerText: {fileID: 413479966}
+  warriorBtnText: {fileID: 20092225}
+  archerBtnText: {fileID: 580426794}
+  monkBtnText: {fileID: 1156897166}
+  lancerBtnText: {fileID: 282032549}
 --- !u!1 &1691959540
 GameObject:
   m_ObjectHideFlags: 0
@@ -6678,7 +6715,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1739399408}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1633523400}
+        m_TargetAssemblyTypeName: Unit_Manager, Assembly-CSharp
+        m_MethodName: BuyOrUpgradeWarrior
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1739399408
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7001,7 +7050,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1816269157
 RectTransform:
   m_ObjectHideFlags: 0

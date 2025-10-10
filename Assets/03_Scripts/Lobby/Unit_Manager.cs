@@ -4,72 +4,126 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+public class UnitData
+{
+    public string name;
+    public int level = 0;
+    public int cost;
+    public float attack;
+    public float upgradeMultiplier = 2f;
+    public bool purchased = false;
+
+    // 생성자 (선택사항)
+    public UnitData(string name, int cost, float attack, float upgradeMultiplier)
+    {
+        this.name = name;
+        this.cost = cost;
+        this.attack = attack;
+        this.upgradeMultiplier = upgradeMultiplier; //가격 배수
+    }
+}
+
 public class Unit_Manager : MonoBehaviour
 {
     [Header("UI")]
-    public TextMeshProUGUI warrior_text;
-    public TextMeshProUGUI archer_text;
-    public TextMeshProUGUI monk_text;
-    public TextMeshProUGUI lancer_text;
+    public TextMeshProUGUI goldText;
+    public TextMeshProUGUI warriorText;
+    public TextMeshProUGUI archerText;
+    public TextMeshProUGUI monkText;
+    public TextMeshProUGUI lancerText;
+    public TextMeshProUGUI warriorBtnText;
+    public TextMeshProUGUI archerBtnText;
+    public TextMeshProUGUI monkBtnText;
+    public TextMeshProUGUI lancerBtnText;
 
-    public TextMeshProUGUI warrior_bt_text;
-    public TextMeshProUGUI archer_bt_text;
-    public TextMeshProUGUI monk_bt_text;
-    public TextMeshProUGUI lancer_bt_text;
+    [Header("유닛 데이터")]
+    public UnitData warrior = new UnitData("워리어", 10, 2f, 2f);
+    public UnitData archer = new UnitData("아처", 50, 5f, 2.5f);
+    public UnitData monk = new UnitData("몽크", 200, 3f, 1.8f);
+    public UnitData lancer = new UnitData("랜서", 500, 8f, 3f);
 
-    [Header("warrior")]
-    private bool warrior_Purchased = true;
-    private int warrior_Level = 1;
-    private int warrior_Cost = 10;
-
-    [Header("archer")]
-    private bool archer_Purchased = false;
-    private int archer_Level = 0;
-    private int archer_Cost = 50;
-
-    [Header("monk")]
-    private bool monk_Purchased = false;
-    private int monk_Level = 0;
-    private int monk_Cost = 200;
-
-    [Header("lancer")]
-    private bool lancer_Purchased = false;
-    private int lancer_Level = 0;
-    private int lancer_Cost = 500;
-
-
-    // Start is called before the first frame update
     void Start()
     {
+        // 워리어는 기본으로 구매되어 있다고 가정
+        warrior.purchased = true;
+        warrior.level = 1;
         UpdateUI();
     }
-
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        {
+            // 항상 Mouse_Click의 골드 표시 갱신
+            goldText.text = $"Gold: {Mouse_Click.instance.gold:F0}";
+        }
+    }
+    public void BuyOrUpgradeWarrior()
+    {
+        BuyOrUpgradeUnit(warrior);
+    }
+    public void BuyOrUpgradeArcher()
+    {
+        BuyOrUpgradeUnit(archer);
+    }
+
+    public void BuyOrUpgradeMonk()
+    {
+        BuyOrUpgradeUnit(monk);
+    }
+
+    public void BuyOrUpgradeLancer()
+    {
+        BuyOrUpgradeUnit(lancer);
+    }
+
+    public void BuyOrUpgradeUnit(UnitData unit)
+    {
+        if (!unit.purchased)
+        {
+            if (Mouse_Click.instance.gold >= unit.cost)
+            {
+                Mouse_Click.instance.gold -= unit.cost;
+                unit.purchased = true;
+                unit.level = 1;
+                unit.cost = Mathf.RoundToInt(unit.cost * unit.upgradeMultiplier);
+                Debug.Log($"{unit.name} 구매 완료! 공격력 {unit.attack}");
+            }
+            else
+            {
+                Debug.Log("골드가 부족합니다!");
+            }
+        }
+        else
+        {
+            if (Mouse_Click.instance.gold >= unit.cost)
+            {
+                Mouse_Click.instance.gold -= unit.cost;
+                unit.level++;
+                unit.attack *= unit.upgradeMultiplier;
+                unit.cost = Mathf.RoundToInt(unit.cost * unit.upgradeMultiplier);
+
+                Debug.Log($"{unit.name} 업그레이드 완료! Lv.{unit.level} / 공격력 {unit.attack}");
+            }
+            else
+            {
+                Debug.Log("골드가 부족합니다!");
+            }
+        }
+
+        Mouse_Click.instance.UpdateUI();
+        UpdateUI();
+
     }
 
     void UpdateUI()
     {
-        string aState = warrior_Purchased ? "업그레이드" : "구매";
-        warrior_bt_text.text = $"{aState}";
+        warriorBtnText.text = warrior.purchased ? "업그레이드" : "구매";
+        archerBtnText.text = archer.purchased ? "업그레이드" : "구매";
+        monkBtnText.text = monk.purchased ? "업그레이드" : "구매";
+        lancerBtnText.text = lancer.purchased ? "업그레이드" : "구매";
 
-        warrior_text.text = $"(Lv.{warrior_Level}) 가격: {warrior_Cost:F0}G\n//warrior스탯";
-
-        string bState = archer_Purchased ? "업그레이드" : "구매";
-        archer_bt_text.text = $"{bState}";
-
-        archer_text.text = $"(Lv.{archer_Level}) 가격: {archer_Cost:F0}G\n//archer스탯";
-
-        string cState = monk_Purchased ? "업그레이드" : "구매";
-        monk_bt_text.text = $"{cState}";
-
-        monk_text.text = $"(Lv.{monk_Level}) 가격: {monk_Cost:F0}G\n//monk스탯";
-
-        string dState = lancer_Purchased ? "업그레이드" : "구매";
-        lancer_bt_text.text = $"{dState}";
-
-        lancer_text.text = $"(Lv.{lancer_Level}) 가격: {lancer_Cost:F0}G\n//lancer스탯";
+        warriorText.text = $"(Lv.{warrior.level}) 가격: {warrior.cost}G\nAtk: {warrior.attack.ToString("F1")}";
+        archerText.text = $"(Lv.{archer.level}) 가격: {archer.cost}G\nAtk: {archer.attack.ToString("F1")}";
+        monkText.text = $"(Lv.{monk.level}) 가격: {monk.cost}G\nAtk: {monk.attack.ToString("F1")}";
+        lancerText.text = $"(Lv.{lancer.level}) 가격: {lancer.cost}G\nAtk: {lancer.attack.ToString("F1")}";
     }
 }
