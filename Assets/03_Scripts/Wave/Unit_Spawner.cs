@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Warrior_Spawner : MonoBehaviour
+public class Unit_Spawner : MonoBehaviour
 {
-    static public Warrior_Spawner instance;
+    static public Unit_Spawner instance;
 
-    [Header("Warrior Settings")]
-    public GameObject[] warriorPrefabs;
+    [Header("Unit Settings")]
+    public GameObject[] unitPrefabs;
     public Transform spawnPoints;
     public Transform[] setWaypoints;
 
@@ -24,12 +24,12 @@ public class Warrior_Spawner : MonoBehaviour
     }
     void Start()
     {
-        InvokeRepeating("SpawnWarrior", 2f, 5f);
+        InvokeRepeating("SpawnUnit", 2f, 5f);
     }
 
-    public void SpawnWarrior()
+    public void SpawnUnit()
     {
-        int i = Random.Range(0, warriorPrefabs.Length);
-        Instantiate(warriorPrefabs[i], spawnPoints.position, Quaternion.identity);
+        int i = Random.Range(0, unitPrefabs.Length);
+        Instantiate(unitPrefabs[i], spawnPoints.position, Quaternion.identity);
     }
 }

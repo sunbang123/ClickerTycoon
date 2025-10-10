@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Monster : UnitBase
+public class Unit : UnitBase
 {
     private SpriteRenderer spriteRenderer;
     private Animator animator;
@@ -11,7 +11,7 @@ public class Monster : UnitBase
     protected override void Awake()
     {
         base.Awake(); // 부모 클래스의 Awake 호출
-        waypoints = Monster_Spawner.instance.setWaypoints;
+        waypoints = Unit_Spawner.instance.setWaypoints;
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
     }
@@ -20,6 +20,7 @@ public class Monster : UnitBase
     {
         base.MoveTowardsWaypoint(); // 부모의 기본 이동 로직 사용
     }
+
     protected override void OnWaypointReached()
     {
         if (currentWaypointIndex is 1 or 3 or 5 or 7)
@@ -45,26 +46,29 @@ public class Monster : UnitBase
         float rayLength = 0.5f;
 
         // 디버그 선 그리기
-        Debug.DrawRay(startPoint, direction * rayLength, Color.green, 1f);
-        
-        int layerMask = LayerMask.GetMask("User");
+        Debug.DrawRay(startPoint, direction * rayLength, Color.red, 1f);
 
+        int layerMask = LayerMask.GetMask("Enemy");
 
         // Raycast 발사
         RaycastHit2D hit = Physics2D.Raycast(startPoint, direction, rayLength, layerMask);
-        Debug.Log("Monster: " + hit);
+        Debug.Log("Unit: " + hit);
+
 
         if (hit.collider == null) return;
 
-        ApplyKnockback();
+        animator.SetBool("Combat", true);
+        ApplyKnockback(); // 넉백 움직임
         StartCoroutine(BattleCoroutine());
-        Invoke("Knockbacked", knockbackTime);
-        StartKnockback();
-        hit.collider.gameObject.GetComponent<Unit>().Damaged();
+        Invoke("Knockbacked", knockbackTime); // charge와 battle 플래그 설정 false
+        StartKnockback(); // charge와 battle 플래그 설정 true
+        hit.collider.gameObject.GetComponent<Monster>().Damaged();
     }
+
     private IEnumerator BattleCoroutine()
     {
-        yield return new WaitForSeconds(0f);
+        yield return new WaitForSeconds(0.1f);
+        animator.SetBool("Knockback", true);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -75,7 +79,9 @@ public class Monster : UnitBase
     public override void Knockbacked()
     {
         base.Knockbacked(); // 부모의 기본 동작 호출
-        Debug.Log("Monster charging!");
+        Debug.Log("Warrior charging!");
+        animator.SetBool("Knockback", false);
+        animator.SetBool("Combat", false);
     }
 
     public override void Damaged()

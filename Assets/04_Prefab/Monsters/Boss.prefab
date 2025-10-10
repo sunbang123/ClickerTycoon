@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 57805023}
   - component: {fileID: 57805024}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,8 +37,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 20}
+  m_AnchoredPosition: {x: 0.18, y: 0.1}
+  m_SizeDelta: {x: 119.138, y: 15.219}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &57805024
 MonoBehaviour:
@@ -85,9 +85,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1072596677}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 200
+  m_MaxValue: 50
   m_WholeNumbers: 1
-  m_Value: 200
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -100,7 +100,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 308560471}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Handle Slide Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 378050252}
   - component: {fileID: 378050254}
   - component: {fileID: 378050253}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -215,7 +215,7 @@ GameObject:
   - component: {fileID: 530392888}
   - component: {fileID: 530392890}
   - component: {fileID: 530392889}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -290,7 +290,7 @@ GameObject:
   m_Component:
   - component: {fileID: 642650303}
   - component: {fileID: 642650304}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -317,8 +317,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 1}
-  m_SizeDelta: {x: 160, y: 20}
+  m_AnchoredPosition: {x: 0.17999959, y: 0.86100024}
+  m_SizeDelta: {x: 119.138, y: 15.219}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &642650304
 MonoBehaviour:
@@ -383,7 +383,7 @@ GameObject:
   - component: {fileID: 924989921}
   - component: {fileID: 924989920}
   - component: {fileID: 924989919}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -411,7 +411,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.088, y: 0.646}
+  m_AnchoredPosition: {x: 0.171, y: 0.573}
   m_SizeDelta: {x: 13.092, y: 2.081}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &924989921
@@ -486,7 +486,7 @@ GameObject:
   - component: {fileID: 997273625}
   - component: {fileID: 997273627}
   - component: {fileID: 997273626}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -562,7 +562,7 @@ GameObject:
   - component: {fileID: 1072596677}
   - component: {fileID: 1072596679}
   - component: {fileID: 1072596678}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -636,7 +636,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1335817405}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Handle Slide Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -673,7 +673,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1348185583}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -712,7 +712,7 @@ GameObject:
   - component: {fileID: 1765139483}
   - component: {fileID: 1765139485}
   - component: {fileID: 1765139484}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -786,7 +786,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1885487223}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -825,7 +825,7 @@ GameObject:
   - component: {fileID: 1980859964}
   - component: {fileID: 1980859966}
   - component: {fileID: 1980859965}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -901,7 +901,7 @@ GameObject:
   - component: {fileID: 291069554456047134}
   - component: {fileID: 1003029049698544584}
   - component: {fileID: 7656956664390193804}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: profile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -925,8 +925,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -5.62, y: 0.52}
-  m_SizeDelta: {x: 1.941, y: 1.609}
+  m_AnchoredPosition: {x: -5.5520024, y: 0.52}
+  m_SizeDelta: {x: 2.128, y: 1.609}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1003029049698544584
 CanvasRenderer:
@@ -956,7 +956,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b9cd191a0a4264644a64addac27afe6d, type: 3}
+  m_Sprite: {fileID: 1964411392, guid: fdb2321cb2065324e969c6e233d43508, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -977,7 +977,7 @@ GameObject:
   - component: {fileID: 5811759669868329822}
   - component: {fileID: 5938079020310291340}
   - component: {fileID: 3541357701436492000}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1055,7 +1055,7 @@ GameObject:
   - component: {fileID: 1691654600}
   - component: {fileID: 1691654605}
   - component: {fileID: 1691654601}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Boss
   m_TagString: Monster
   m_Icon: {fileID: 0}
