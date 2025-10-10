@@ -99,5 +99,5 @@ InitTestScene*.unity*
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
 
 
-/Assets/01_Assets/basic_tileset_and_assets_standard
-/Assets/01_Assets/TinySwords
+# 에셋 저작권 보호
+/Assets/01_Assets/
