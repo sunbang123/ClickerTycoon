@@ -22,10 +22,6 @@ public class Mouse_Click : MonoBehaviour
     public Button autoGoldA_Button;
     public Button autoGoldB_Button;
 
-
-    public GameObject normal_shopUI; // ← 상점 UI 오브젝트 (활성/비활성 확인용)
-    public GameObject battle_shopUI; // ← 상점 UI 오브젝트 (활성/비활성 확인용)
-
     [Header("Gold Values")]
     public int gold = 0;         // Gold 변수
     public int clickPower = 1;    // 클릭당 골드
@@ -48,13 +44,38 @@ public class Mouse_Click : MonoBehaviour
     private float autoGoldB_Timer = 0f;
     private int autoGoldB_Level = 0;
 
+    [Header("Unit UI")]
+    public TextMeshProUGUI warriorText;
+    public TextMeshProUGUI archerText;
+    public TextMeshProUGUI monkText;
+    public TextMeshProUGUI lancerText;
+    public TextMeshProUGUI warriorBtnText;
+    public TextMeshProUGUI archerBtnText;
+    public TextMeshProUGUI monkBtnText;
+    public TextMeshProUGUI lancerBtnText;
 
+    public GameObject normal_shopUI; // ← 상점 UI 오브젝트 (활성/비활성 확인용)
+    public GameObject battle_shopUI; // ← 상점 UI 오브젝트 (활성/비활성 확인용)
 
     private void Awake()
     {
         instance = this;
 
-        gold = DataManager.instance.playerData.GetData(GameData.Gold);
+        // PlayerData로부터 불러오기
+        var data = DataManager.instance.playerData;
+        gold = data.GetData(GameData.Gold);
+        clickPower = data.GetData(GameData.ClickPower);
+        click_Cost = data.GetData(GameData.ClickCost);
+        click_Level = data.GetData(GameData.ClickLevel);
+        autoGoldA_Level = data.GetData(GameData.AutoGoldA_Level);
+        autoGoldA_Cost = data.GetData(GameData.AutoGoldA_Cost);
+        autoGoldA_Amount = data.GetData(GameData.AutoGoldA_Amount);
+        autoGoldB_Level = data.GetData(GameData.AutoGoldB_Level);
+        autoGoldB_Cost = data.GetData(GameData.AutoGoldB_Cost);
+        autoGoldB_Amount = data.GetData(GameData.AutoGoldB_Amount);
+
+        autoGoldA_Purchased = autoGoldA_Level > 0;
+        autoGoldB_Purchased = autoGoldB_Level > 0;
     }
 
     void Start()
@@ -124,6 +145,11 @@ public class Mouse_Click : MonoBehaviour
             click_Level++;
 
             UpdateUI();
+
+            DataManager.instance.playerData.SetData(GameData.Gold, gold);
+            DataManager.instance.playerData.SetData(GameData.ClickPower, clickPower);
+            DataManager.instance.playerData.SetData(GameData.ClickCost, click_Cost);
+            DataManager.instance.playerData.SetData(GameData.ClickLevel, click_Level);
         }
         else
         {
@@ -147,6 +173,10 @@ public class Mouse_Click : MonoBehaviour
                 autoGoldA_Cost *= 2;
 
                 UpdateUI();
+
+                DataManager.instance.playerData.SetData(GameData.Gold, gold);
+                DataManager.instance.playerData.SetData(GameData.AutoGoldA_Level, autoGoldA_Level);
+                DataManager.instance.playerData.SetData(GameData.AutoGoldA_Cost, autoGoldA_Cost);
             }
             else
             {
@@ -165,6 +195,11 @@ public class Mouse_Click : MonoBehaviour
 
                 Debug.Log($"자동채굴기 A 업그레이드 완료! 현재 채굴량: {autoGoldA_Amount}");
                 UpdateUI();
+
+                DataManager.instance.playerData.SetData(GameData.Gold, gold);
+                DataManager.instance.playerData.SetData(GameData.AutoGoldA_Amount, autoGoldA_Amount);
+                DataManager.instance.playerData.SetData(GameData.AutoGoldA_Cost, autoGoldA_Cost);
+                DataManager.instance.playerData.SetData(GameData.AutoGoldA_Level, autoGoldA_Level);
             }
             else
             {
@@ -189,6 +224,10 @@ public class Mouse_Click : MonoBehaviour
                 autoGoldB_Cost *= 2;
 
                 UpdateUI();
+
+                DataManager.instance.playerData.SetData(GameData.Gold, gold);
+                DataManager.instance.playerData.SetData(GameData.AutoGoldB_Level, autoGoldB_Level);
+                DataManager.instance.playerData.SetData(GameData.AutoGoldB_Cost, autoGoldB_Cost);
             }
             else
             {
@@ -207,6 +246,11 @@ public class Mouse_Click : MonoBehaviour
 
                 Debug.Log($"자동채굴기 B 업그레이드 완료! 현재 채굴량: {autoGoldB_Amount}");
                 UpdateUI();
+
+                DataManager.instance.playerData.SetData(GameData.Gold, gold);
+                DataManager.instance.playerData.SetData(GameData.AutoGoldB_Amount, autoGoldB_Amount);
+                DataManager.instance.playerData.SetData(GameData.AutoGoldB_Cost, autoGoldB_Cost);
+                DataManager.instance.playerData.SetData(GameData.AutoGoldB_Level, autoGoldB_Level);
             }
             else
             {
@@ -216,22 +260,29 @@ public class Mouse_Click : MonoBehaviour
     }
     public void UpdateUI()
     {
+        // 기존 골드 및 자동채굴 UI 갱신
         goldText.text = $"Gold: {gold:F0}";
         upgradeText.text = $"(Lv.{click_Level}) 가격: {click_Cost:F0}G\n클릭당: {clickPower:F0}Gold";
         perGoldText.text = $"클릭당: {clickPower:F0}Gold";
 
-
-        // 자동채굴 A UI
-        string aState = autoGoldA_Purchased ? "업그레이드" : "구매";
-        autoGoldA_Bt_Text.text = $"{aState}";
-
+        autoGoldA_Bt_Text.text = autoGoldA_Purchased ? "업그레이드" : "구매";
         autoGoldA_Text.text = $"(Lv.{autoGoldA_Level}) 가격: {autoGoldA_Cost:F0}G\n{autoGoldA_Amount:F0}Gold/1초";
 
-        // 자동채굴 B UI
-        string bState = autoGoldB_Purchased ? "업그레이드" : "구매";
-        autoGoldB_Bt_Text.text = $"{bState}";
-
+        autoGoldB_Bt_Text.text = autoGoldB_Purchased ? "업그레이드" : "구매";
         autoGoldB_Text.text = $"(Lv.{autoGoldB_Level}) 가격: {autoGoldB_Cost:F0}G\n{autoGoldB_Amount:F0}Gold/3초";
+
+        // 유닛 UI 갱신
+        var units = Unit_Manager.instance.units;
+
+        warriorBtnText.text = units["워리어"].purchased ? "업그레이드" : "구매";
+        archerBtnText.text = units["아처"].purchased ? "업그레이드" : "구매";
+        monkBtnText.text = units["몽크"].purchased ? "업그레이드" : "구매";
+        lancerBtnText.text = units["랜서"].purchased ? "업그레이드" : "구매";
+
+        warriorText.text = $"(Lv.{units["워리어"].level}) 가격: {units["워리어"].cost}G\nAtk: {units["워리어"].attack:F0}";
+        archerText.text = $"(Lv.{units["아처"].level}) 가격: {units["아처"].cost}G\nAtk: {units["아처"].attack:F0}";
+        monkText.text = $"(Lv.{units["몽크"].level}) 가격: {units["몽크"].cost}G\nAtk: {units["몽크"].attack:F0}";
+        lancerText.text = $"(Lv.{units["랜서"].level}) 가격: {units["랜서"].cost}G\nAtk: {units["랜서"].attack:F0}";
     }
 
     void GoldData_Update(int gold)

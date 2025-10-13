@@ -2107,14 +2107,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1633523400}
         m_TargetAssemblyTypeName: Unit_Manager, Assembly-CSharp
-        m_MethodName: BuyOrUpgradeLancer
-        m_Mode: 1
+        m_MethodName: BuyOrUpgradeUnit
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: "\uB79C\uC11C"
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &533278530
@@ -2452,14 +2452,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1633523400}
         m_TargetAssemblyTypeName: Unit_Manager, Assembly-CSharp
-        m_MethodName: BuyOrUpgradeMonk
-        m_Mode: 1
+        m_MethodName: BuyOrUpgradeUnit
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: "\uBABD\uD06C"
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &574118305
@@ -4188,14 +4188,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1633523400}
         m_TargetAssemblyTypeName: Unit_Manager, Assembly-CSharp
-        m_MethodName: BuyOrUpgradeArcher
-        m_Mode: 1
+        m_MethodName: BuyOrUpgradeUnit
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: "\uC544\uCC98"
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1078073681
@@ -5212,10 +5212,18 @@ MonoBehaviour:
   autoGoldB_Bt_Text: {fileID: 1397686202}
   autoGoldA_Button: {fileID: 292101716}
   autoGoldB_Button: {fileID: 1711470797}
-  normal_shopUI: {fileID: 2119577235}
-  battle_shopUI: {fileID: 1816269156}
   gold: 1000
   clickPower: 1
+  warriorText: {fileID: 938855745}
+  archerText: {fileID: 550919283}
+  monkText: {fileID: 436697166}
+  lancerText: {fileID: 413479966}
+  warriorBtnText: {fileID: 20092225}
+  archerBtnText: {fileID: 580426794}
+  monkBtnText: {fileID: 1156897166}
+  lancerBtnText: {fileID: 282032549}
+  normal_shopUI: {fileID: 2119577235}
+  battle_shopUI: {fileID: 1816269156}
 --- !u!4 &1434928699
 Transform:
   m_ObjectHideFlags: 0
@@ -6071,43 +6079,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffdfeea34a3a0bd4f8ce4f9c2a966288, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goldText: {fileID: 607587777}
-  warriorText: {fileID: 938855745}
-  archerText: {fileID: 550919283}
-  monkText: {fileID: 436697166}
-  lancerText: {fileID: 413479966}
-  warriorBtnText: {fileID: 20092225}
-  archerBtnText: {fileID: 580426794}
-  monkBtnText: {fileID: 1156897166}
-  lancerBtnText: {fileID: 282032549}
-  warrior:
-    name: "\uC6CC\uB9AC\uC5B4"
-    level: 0
-    cost: 10
-    attack: 2
-    upgradeMultiplier: 2
-    purchased: 0
-  archer:
-    name: "\uC544\uCC98"
-    level: 0
-    cost: 50
-    attack: 5
-    upgradeMultiplier: 2.5
-    purchased: 0
-  monk:
-    name: "\uBABD\uD06C"
-    level: 0
-    cost: 200
-    attack: 3
-    upgradeMultiplier: 1.8
-    purchased: 0
-  lancer:
-    name: "\uB79C\uC11C"
-    level: 0
-    cost: 500
-    attack: 8
-    upgradeMultiplier: 3
-    purchased: 0
 --- !u!1 &1691959540
 GameObject:
   m_ObjectHideFlags: 0
@@ -6746,14 +6717,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1633523400}
         m_TargetAssemblyTypeName: Unit_Manager, Assembly-CSharp
-        m_MethodName: BuyOrUpgradeWarrior
-        m_Mode: 1
+        m_MethodName: BuyOrUpgradeUnit
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: "\uC6CC\uB9AC\uC5B4"
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1739399408
