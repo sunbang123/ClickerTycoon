@@ -161,9 +161,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 4524373505617603028}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 20
+  m_MaxValue: 5
   m_WholeNumbers: 0
-  m_Value: 20
+  m_Value: 5
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -599,7 +599,7 @@ MonoBehaviour:
   waypoints: []
   healthSlider: {fileID: 0}
   knockbackForce: 2
-  chargeTime: 1
+  knockbackTime: 2
   damageAmount: 2
 --- !u!50 &3768350250133888242
 Rigidbody2D:
@@ -657,4 +657,4 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: -0.04015533, y: 0.028771088}
   serializedVersion: 2
-  m_Radius: 0.34106433
+  m_Radius: 0.6857142

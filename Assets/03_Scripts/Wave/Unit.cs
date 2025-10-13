@@ -7,7 +7,6 @@ public class Unit : UnitBase
 {
     private SpriteRenderer spriteRenderer;
     private Animator animator;
-
     protected override void Awake()
     {
         base.Awake(); // 부모 클래스의 Awake 호출
@@ -67,11 +66,17 @@ public class Unit : UnitBase
 
     private IEnumerator BattleCoroutine()
     {
-        yield return new WaitForSeconds(0.1f);
         animator.SetBool("Knockback", true);
+        yield return new WaitForSeconds(0.1f);
+        animator.SetBool("Knockback", false);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
+    {
+        OnBattleStart(other);
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
     {
         OnBattleStart(other);
     }
