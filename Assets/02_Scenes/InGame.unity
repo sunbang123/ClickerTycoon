@@ -3021,6 +3021,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitPrefabs:
   - {fileID: 1248554676682416894, guid: a8f303254059664429f32f59aa579aaa, type: 3}
+  - {fileID: 8059466852354235975, guid: 60fbbb27e56814c4d8e3f6c1f5bf4781, type: 3}
+  - {fileID: 4843509269882545943, guid: 7775c93cb2b7d9e4ab4a9a76f12473c7, type: 3}
+  - {fileID: 1197503809828520539, guid: 6557248caabdb614d99bedca5936660a, type: 3}
   spawnPoints: {fileID: 607347212}
   setWaypoints:
   - {fileID: 577045462}
