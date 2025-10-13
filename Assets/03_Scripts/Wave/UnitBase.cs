@@ -15,11 +15,11 @@ public interface ICombat
 {
     Slider HealthSlider { get; set; }
     float KnockbackForce { get; set; }
-    float ChargeTime { get; set; }
+    float KnockbackTime { get; set; }
     float DamageAmount { get; set; }
 
     void Damaged();
-    void Charge();
+    void Knockbacked();
     void OnBattleStart(Collider2D other);
 }
 
@@ -33,7 +33,7 @@ public abstract class UnitBase : MonoBehaviour, IMove, ICombat
     [Header("Combat Settings")]
     public Slider healthSlider;
     public float knockbackForce = 0.001f;
-    public float chargeTime = 2f;
+    public float knockbackTime = 2f;
     public float damageAmount = 2f;
 
     // 인터페이스 프로퍼티 구현
@@ -41,7 +41,7 @@ public abstract class UnitBase : MonoBehaviour, IMove, ICombat
     public Transform[] Waypoints { get => waypoints; set => waypoints = value; }
     public Slider HealthSlider { get => healthSlider; set => healthSlider = value; }
     public float KnockbackForce { get => knockbackForce; set => knockbackForce = value; }
-    public float ChargeTime { get => chargeTime; set => chargeTime = value; }
+    public float KnockbackTime { get => knockbackTime; set => knockbackTime = value; }
     public float DamageAmount { get => damageAmount; set => damageAmount = value; }
 
     protected int currentWaypointIndex = 0;
@@ -91,11 +91,11 @@ public abstract class UnitBase : MonoBehaviour, IMove, ICombat
         return (_battleFlag == false);
     }
 
-    protected void StartCharging()
+    protected void StartKnockback()
     {
         _battleFlag = true;
     }
-    public virtual void Charge()
+    public virtual void Knockbacked()
     {
         _battleFlag = false;
     }
