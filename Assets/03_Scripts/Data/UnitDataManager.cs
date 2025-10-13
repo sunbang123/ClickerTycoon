@@ -9,8 +9,6 @@ public class UnitDataManager : MonoBehaviour
 
     private void Awake()
     {
-        // 이 스크립트는 씬마다 따로 생길 수 있으므로 자동 제거 X
-        // 대신 씬이 로드될 때마다 Unit_Manager를 재연결
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
@@ -21,21 +19,22 @@ public class UnitDataManager : MonoBehaviour
 
     private IEnumerator Initialize()
     {
-        // Unit_Manager가 생성될 때까지 대기
         yield return new WaitUntil(() => Unit_Manager.instance != null);
         unitManager = Unit_Manager.instance;
 
-        Debug.Log("<color=green> UnitDataManager 초기화 완료</color>");
+        Debug.Log("<color=green>UnitDataManager 초기화 완료</color>");
         PrintAllUnitInfo();
     }
 
-    // 씬 전환 시 다시 연결
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         if (Unit_Manager.instance != null)
         {
             unitManager = Unit_Manager.instance;
             Debug.Log($"새로운 씬({scene.name})에서 Unit_Manager 다시 연결됨");
+
+            if (Mouse_Click.instance != null)
+                Mouse_Click.instance.UpdateUI(); // UI 갱신은 Mouse_Click에서
         }
     }
 
@@ -47,8 +46,12 @@ public class UnitDataManager : MonoBehaviour
             return;
         }
 
-        unitManager.BuyOrUpgradeArcher();
-        Debug.Log(" 다른 씬에서 아처 업그레이드 실행됨");
+        unitManager.BuyOrUpgradeUnit("아처");
+
+        if (Mouse_Click.instance != null)
+            Mouse_Click.instance.UpdateUI();
+
+        Debug.Log("다른 씬에서 아처 업그레이드 실행됨");
     }
 
     public void PrintAllUnitInfo()
@@ -59,10 +62,12 @@ public class UnitDataManager : MonoBehaviour
             return;
         }
 
-        Debug.Log($"워리어: Lv.{unitManager.warrior.level} / 공격력 {unitManager.warrior.attack}");
-        Debug.Log($"아처: Lv.{unitManager.archer.level} / 공격력 {unitManager.archer.attack}");
-        Debug.Log($"몽크: Lv.{unitManager.monk.level} / 공격력 {unitManager.monk.attack}");
-        Debug.Log($"랜서: Lv.{unitManager.lancer.level} / 공격력 {unitManager.lancer.attack}");
+        foreach (var pair in unitManager.units)
+        {
+            string name = pair.Key;
+            UnitData unit = pair.Value;
+            Debug.Log($"{name}: Lv.{unit.level} / 공격력 {unit.attack}");
+        }
     }
 
     private void OnDestroy()

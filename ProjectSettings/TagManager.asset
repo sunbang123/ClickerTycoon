@@ -5,14 +5,15 @@ TagManager:
   serializedVersion: 2
   tags:
   - Monster
+  - HitPoint
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - User
   - Water
   - UI
-  - 
+  - Enemy
   - 
   - 
   - 
